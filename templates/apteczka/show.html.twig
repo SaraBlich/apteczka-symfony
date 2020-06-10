@@ -23,8 +23,7 @@
     <td>{{lek.ilosc}}</td>
     <td>
         <form method="post" action="{{ path('medykament_utylizuj', {'id': lek.id}) }}" onsubmit="return confirm('Zutylizować?');">
-        <input type="text" name="liczba" placeholder="liczba" />
-        <button class="btn btn-success">Utylizuj</button>
+        <button class="btn btn-danger">Utylizuj lek</button>
         </form>
     </td>
     <td>
