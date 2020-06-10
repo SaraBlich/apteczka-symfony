@@ -7,15 +7,21 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Zarejestruj się</h1>
+    <div style = "text-align: center; width: 400px; margin-left:300px;" class ='hellothere'>
+        <h1>Zarejestruj się</h1></br>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Hasło'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_start(registrationForm) }}
+        <div class = 'trynow'>
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Hasło'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms, {
+                label: 'Akceptuję warunki'
+            }) }}
 
-        <button type="submit" class="btn">Zarejestruj się</button>
-    {{ form_end(registrationForm) }}
+            <button type="submit" class="btn btn-success">Zarejestruj się</button>
+            </div>
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}

@@ -16,30 +16,41 @@
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" />
+        
+
     </head>
     <body>
     <nav class="navbar sticky-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="/index.php"><img style = "margin-right: 20px;" src = '/pharmacy.svg'/> Apteczka</a>
+        <a class="navbar-brand" href="/apteczka"><img style = "margin-right: 20px; margin-left: 2em" src = '/pharmacy.svg'/> Apteczka</a>
         {% if app.user %}
          <a href="{{ path('app_logout') }}" style = "color: white;">Wyloguj się</a>
          {% else %}
-         <a href="{{ path('app_register') }}" style = "color: white;">Zarejestruj się</a>
-         
+         <div style = 'float:right;'>
+            <div style = 'float:left'><a href="{{ path('app_register') }}" style = "color: white;">Zarejestruj się</a></div>
+            <div style = 'margin-left: 3em; margin-right:2em; float:left'><a href="{{ path('app_login') }}" style = "color: white;">Zaloguj się</a></div>
+         </div>
+
         {% endif %}
         
     </nav>
-    <div class = 'container' style = 'padding: 40px; margin-bottom: 50px; text-align:center; align-items: center;'>
-    {% for message in app.flashes('error') %}
-        <div class="flash-notice">
-            {{ message }}
+    
+        <div class = 'container' style = 'padding: 40px; margin-bottom: 50px;                   text-align:center; align-items: center;'>
+         {% for message in app.flashes('error') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+         {% endfor %}
+            {% block body %}
+            {% endblock %}
         </div>
-    {% endfor %}
-        {% block body %}
-
-        {% endblock %}
-    </div>
+        
+    
     <nav class="navbar fixed-bottom navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" style = "margin-left: 350px">Apteczka Online &copy; 2020 Sara Blichowska | Natalia Szczepanek</a>
+        <div class="navbar-brand" style = "margin-left: 350px">Apteczka Online &copy; 2020 Sara Blichowska | Natalia Szczepanek</div>
+        </div>
     </nav>
         {% block javascripts %}{% endblock %}
     </body>

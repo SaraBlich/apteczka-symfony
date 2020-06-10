@@ -6,8 +6,9 @@
     <h1>Apteczka</h1>
 
     <h3> Witaj w {{ apteczka.nazwa }} </h3>
+    <br>
 
-    <table class="table table-hover">
+    <table class="table table-hover table-dark">
     <tr>
         <th>Nazwa</th>
         <th>Data waznosci</th>
@@ -36,9 +37,12 @@
     </tr>
 {% endfor %}
     </table>
-    <a href="{{ path('apteczka_index') }}">Wróć do listy apteczek</a>
+    <br/>
+    <a style = 'font-size: 25px; margin-right: 20px; color: black;' href="{{ path('apteczka_index') }}">Wróć do listy apteczek</a>
 
-    <a href="{{ path('apteczka_edit', {'id': apteczka.id}) }}">Edytuj</a>
+    <a style = 'font-size: 25px; color: black;' href="{{ path('apteczka_edit', {'id': apteczka.id}) }}">Edytuj</a>
+    <br />
+    <br />
 
     {{ include('apteczka/_delete_form.html.twig') }}
     

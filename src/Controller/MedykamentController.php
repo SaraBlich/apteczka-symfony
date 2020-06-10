@@ -23,18 +23,20 @@ class MedykamentController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $medykament = $repo->find($id);
         $liczba = $request->request->get('liczba', 0);
-        $medykament->setZutylizowanych($medykament->getZutylizowanych() + $liczba);
-        $medykament->setIlosc($medykament->getIlosc() - $liczba);
-        if ($medykament->getIlosc() < 0) {
+        if ((int)$medykament->getIlosc() < (int)$liczba) {
             $this->addFlash('error', 'Nie można usunąć więcej niż się ma!');
 
             return $this->render('apteczka/show.html.twig', [
                 'apteczka' => $medykament->getApteczka(),
             ]);
         }
+        $medykament->setWydanych($medykament->getWydanych() + $liczba);
+        $medykament->setIlosc($medykament->getIlosc() - $liczba);
+        
         if ($medykament->getIlosc() == 0) {
             $entityManager->remove($medykament);
         }
+        //walidacja ilosci dodac :)
         $entityManager->flush();
 
         return $this->redirectToRoute('apteczka_show', [
